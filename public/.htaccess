@@ -1,0 +1,14 @@
+# Bloque que verifica si el módulo "mod_rewrite" este habilitado.
+<IfModule mod_rewrite.c>
+
+    # Se activa el motor de reescritura.
+    RewriteEngine on
+
+    # Se evita que se reescriban solicitudes a archivos o directorios reales.
+    RewriteCond %{SCRIPT_FILENAME} !-f
+    RewriteCond %{SCRIPT_FILENAME} !-d
+
+    # Se define una regla de reescritura que redirige todas las solicitudes a index.php.
+    RewriteRule ^(.*)/(.*) index.php?controller=$1&action=$2 [QSA,L]
+
+</IfModule>
