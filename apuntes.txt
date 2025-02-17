@@ -1,0 +1,9 @@
+echo "Me cago me meo, me tiro un peo";
+
+COSAS A TENER EN CUENTA:
+	- (Linea 53) Por ahora en UsuarioRepository.php no asigno el id de la ultima inserccion.
+
+
+COMANDOS
+    - composer init
+    - composer require
