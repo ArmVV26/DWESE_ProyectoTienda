@@ -1,8 +1,3 @@
-<?php
-    // Inicio la sesión
-    session_start();
-?>
-
     <h1>Formulario de Registro</h1>
 
     <!-- Mostrar mensaje de exito si existe -->
@@ -30,22 +25,22 @@
     <!-- Formulario de Registro -->
     <form action="index.php?controller=Usuario&action=registrar" method="POST">
         <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" id="nombre" required><br>
+        <input type="text" name="data[nombre]" id="nombre" required><br>
 
         <label for="apellidos">Apellidos:</label>
-        <input type="text" name="apellidos" id="apellidos" required><br>
+        <input type="text" name="data[apellidos]" id="apellidos" required><br>
 
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required><br>
+        <input type="email" name="data[email]" id="email" required><br>
 
         <label for="password">Contraseña:</label>
-        <input type="password" name="password" id="password" required><br>
+        <input type="password" name="data[password]" id="password" required><br>
 
         <!-- Muestro un menú de selección del rol, si hay una sesion iniciada de un usuario admin  -->
         <?php
             if (isset($_SESSION['inicioSesion']) && $_SESSION['inicioSesion']->rol === 'admin') {
                 echo "<label for='rol'>Rol:</label>
-                      <select name='rol' id='rol'>
+                      <select name='data[rol]' id='rol'>
                           <option value='cliente'>Cliente</option>
                           <option value='admin'>Admin</option>
                       </select><br>";

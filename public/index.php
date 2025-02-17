@@ -1,4 +1,7 @@
 <?php
+    // Inicio de la sesión
+    session_start();
+    
     // Forzamos una sesión de administrador para efectos de prueba.
     // En un entorno real, esto se haría tras un login correcto.
     if (!isset($_SESSION['inicioSesion'])) {
@@ -9,6 +12,8 @@
             'rol'  => 'admin'
         ];
     }
+
+    unset($_SESSION['inicioSesion']);
 
     // Carga el autoload (Composer necesario PHP-Dotenv)
     require_once __DIR__ . '/../vendor/autoload.php';

@@ -4,7 +4,12 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Lib\\": "lib/"
+            "Lib\\": "lib/",
+            "Controllers\\": "./app/Controllers/",
+            "Models\\": "./app/Models/",
+            "Repositories\\": "./app/Repositories/",
+            "Services\\": "./app/Services/",
+            "Views\\": "./app/Views/"
         }
     },
     "authors": [

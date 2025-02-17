@@ -7,7 +7,9 @@
         // Atributos
         private $rutas = [];
 
-        // Método para agregar rutas a la lista
+        /**
+         * Método para agregar una ruta a la lista de rutas
+         */
         public static function add(string $metodo, string $accion, Callable $controller):void{
 
             // Elimino los espacios en blanco
@@ -17,15 +19,17 @@
             self::$rutas[$metodo][$accion] = $controller;
         }
 
-        // Este método se encarga de obtener el sufijo de la URL que permitirá seleccionar
-        // la ruta y mostrar el resultado de ejecutar la función pasada al metodo add para esa ruta
-        // usando call_user_func()
+        /**
+         * Este método se encarga de obtener el sufijo de la URL que permitirá seleccionar
+         * la ruta y mostrar el resultado de ejecutar la función pasada al método add para esa ruta
+         * usando call_user_func()
+         */
         public static function dispatch():void {
             // Obtengo el método de la petición
             $metodo = $_SERVER['REQUEST_METHOD']; 
             
             // Obtengo la acción de la petición
-            $accion = preg_replace('/clinicarouter/','',$_SERVER['REQUEST_URI']);
+            $accion = preg_replace('/hiperarmando/','',$_SERVER['REQUEST_URI']);
             $accion = trim($accion, '/');
 
             // Verifico si la acción tiene un parámetro

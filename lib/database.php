@@ -17,11 +17,11 @@
             $host = $_ENV['DB_HOST'];
             $dbname = $_ENV['DB_NAME'];
             $user = $_ENV['DB_USER'];
-            $password = $_ENV['DB_PASSWORD'];
+            $pass = $_ENV['DB_PASS'];
             $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8";
 
             try {
-                $this->conexion = new PDO($dsn, $user, $password);
+                $this->conexion = new PDO($dsn, $user, $pass);
                 $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             } catch (PDOException $e) {
@@ -29,7 +29,11 @@
             }
         }
 
-        // Método para ejecutar una consulta
+        /**
+         * Método para obtener la conexión 
+         * 
+         * @return PDO|null Devuelve la conexión o null si no se ha podido establecer
+         */
         public function getConexion(): ?PDO {
             return $this->conexion;
         }
