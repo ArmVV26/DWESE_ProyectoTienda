@@ -1,0 +1,69 @@
+/* Variables */
+:root {
+    --color-negro: #01161e;
+    --color-azul: #124559;
+    --color-azul-claro: #598392;
+    --color-beige: #AEC3B0;
+    --color-blanco: #EFF6E0;
+}
+
+/* Normalizacion */
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+/* Fuentes */
+@font-face {
+    font-family: "Lato";
+    src: url("../media/fonts/Lato-Regular.ttf");
+}
+
+body {
+    background-color: var(--color-blanco);
+    font-family: Lato;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-negro);
+}
+
+.logo-web {
+    width: 7.5rem;
+    height: 7.5rem;
+    border-radius: 20rem;
+    border: 2px solid var(--color-beige);
+    margin: 0.5rem 0 0.5rem 2rem;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.logo-web:hover {
+    width: 6.5rem;
+    height: 6.5rem;
+    margin: 1rem 0 1rem 2rem;
+}
+
+.menu ul {
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    color: var(--color-beige);
+    font-size: 1.25rem;
+    padding: 1rem;
+    transition: all 0.15s;
+}
+
+a:hover {
+    color: var(--color-azul-claro);
+    font-weight: bold;
+}

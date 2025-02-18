@@ -7,3 +7,8 @@ COSAS A TENER EN CUENTA:
 COMANDOS
     - composer init
     - composer require
+
+COSAS DEL TEMA:
+    - Services y Repository
+    - Config Composer
+    - URL amigable -> BASE_URL

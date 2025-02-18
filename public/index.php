@@ -4,16 +4,19 @@
     
     // Forzamos una sesión de administrador para efectos de prueba.
     // En un entorno real, esto se haría tras un login correcto.
-    if (!isset($_SESSION['inicioSesion'])) {
-        // Simulamos un objeto (por ejemplo, un stdClass) con la propiedad "rol"
-        $_SESSION['inicioSesion'] = (object)[
-            'id'   => 1,
-            'nombre' => 'Admin',
-            'rol'  => 'admin'
-        ];
-    }
+    // if (!isset($_SESSION['inicioSesion'])) {
+    //     // Simulamos un objeto (por ejemplo, un stdClass) con la propiedad "rol"
+    //     $_SESSION['inicioSesion'] = (object)[
+    //         'id'   => 1,
+    //         'nombre' => 'Admin',
+    //         'rol'  => 'admin'
+    //     ];
+    // }
 
-    unset($_SESSION['inicioSesion']);
+    // unset($_SESSION['inicioSesion']);
+
+    // Cargar el header de la web
+    require_once __DIR__ . '/../App/Views/layout/header.php';
 
     // Carga el autoload (Composer necesario PHP-Dotenv)
     require_once __DIR__ . '/../vendor/autoload.php';
