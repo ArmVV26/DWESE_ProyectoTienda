@@ -1,10 +1,12 @@
 /* Variables */
 :root {
-    --color-negro: #01161e;
-    --color-azul: #124559;
-    --color-azul-claro: #598392;
-    --color-beige: #AEC3B0;
-    --color-blanco: #EFF6E0;
+    --color-amarillo: #cca43b;
+    --color-auzl-oscuro: #242f40;
+    --color-marron: #363636;
+    --color-gris: #E5E5E5;
+    --color-blanco: #fffdfa;
+    --color-negro: #121212;
+    --color-rojo: #e22d00;
 }
 
 /* Normalizacion */
@@ -23,23 +25,35 @@
     src: url("../media/fonts/Lato-Regular.ttf");
 }
 
+@font-face {
+    font-family: "Poppins";
+    src: url("../media/fonts/Poppins-Regular.ttf");
+}
+
 body {
     background-color: var(--color-blanco);
     font-family: Lato;
+    display: flex;
+    flex-direction: column;
 }
 
+html, body {
+    height: 100%;
+}
+
+/* Estilo del Header */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--color-negro);
+    background-color: var(--color-marron);
 }
 
 .logo-web {
     width: 7.5rem;
     height: 7.5rem;
     border-radius: 20rem;
-    border: 2px solid var(--color-beige);
+    border: 2px solid var(--color-amarillo);
     margin: 0.5rem 0 0.5rem 2rem;
     cursor: pointer;
     transition: all 0.25s;
@@ -54,16 +68,235 @@ header {
 .menu ul {
     display: flex;
     justify-content: center;
+    padding-right: 5rem;
 }
 
 a {
-    color: var(--color-beige);
+    color: var(--color-gris);
     font-size: 1.25rem;
     padding: 1rem;
     transition: all 0.15s;
 }
 
 a:hover {
-    color: var(--color-azul-claro);
+    color: var(--color-amarillo);
     font-weight: bold;
+}
+
+.menu-user {
+    position: relative;
+}
+
+.menu-user .submenu {
+    display: none;
+    position: absolute;
+    width: 10rem;
+    text-align: left;
+    top: 100%;
+    left: 1rem;
+    right: 0;
+    background-color: var(--color-gris);
+    border: 2px solid var(--color-amarillo);
+    border-radius: 1rem;
+    list-style: none;
+    padding: 0.25rem 0;
+    margin: 0.25rem 0 0;
+    z-index: 1000;
+}
+
+.submenu li {
+    width: 100%;
+    padding: 0.5rem 0;
+}
+
+.submenu li a {
+    font-size: 1rem;
+    color: var(--color-negro);
+    transition: all 0.25s;
+}
+
+.submenu li a:hover {
+    color: var(--color-amarillo);
+}
+
+.menu-user:hover .submenu {
+    display: block;
+}
+
+/* Estilo del main */
+main {
+    flex: 1;
+}
+
+/* Estilo del Footer */
+footer {
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-marron);
+    color: var(--color-gris);
+    font-size: 1.25rem;
+    padding: 1rem;
+}
+
+.menu-footer ul{
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+footer p {
+    opacity: 0.55;
+    padding: 0.5rem;
+}
+
+/* Estilo de los Formularios */
+.contenedor {
+    width: 50%;
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--color-auzl-oscuro);
+    border: 4px solid var(--color-amarillo);
+    border-radius: 1rem;
+    box-shadow: 3px 4px 0 1px var(--color-marron);
+}
+
+.contenedor h1 {
+    font-size: 3rem;
+    font-style: italic;
+    text-align: center;
+    color: var(--color-gris);
+    text-shadow: 1px 1px 2px var(--color-amarillo);
+    padding: 1rem 0 0.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    padding: 1rem;
+}
+
+label {
+    font-family: Poppins;
+    font-size: 1.5rem;
+    color: var(--color-gris);
+}
+
+input,select {
+    font-family: Poppins;
+    font-size: 1.25rem;
+    padding: 0.25rem;
+    margin: 0.25rem 0 1.5rem;
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-blanco);
+    background-color: var(--color-gris);
+    color: var(--color-marron);
+    transition: all 0.25s;
+}
+
+input:focus, select:focus {
+    border: 2px solid var(--color-amarillo);
+}
+
+input[type="submit"] {
+    background-color: var(--color-gris);
+    color: var(--color-marron);
+    font-weight: bold;
+    cursor: pointer;
+    width: 30%;
+    margin: 1.5rem 0 0;
+    align-self: center;
+    transition: all 0.25s;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--color-amarillo);
+    color: var(--color-gris);
+}
+
+/* Errores del Formulario */
+.exito {
+    font-size: 1.25rem;
+    color: var(--color-amarillo);
+}
+
+.fallo {
+    font-size: 1.25rem;
+    color: var(--color-rojo);
+}
+
+.error {
+    color: var(--color-rojo);
+    font-size: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+.error li {
+    list-style: disc;
+    margin-left: 1rem;
+}
+
+/* Estilo de las tablas */
+.contenedor-tabla {
+    width: 70%;
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--color-auzl-oscuro);
+    border: 4px solid var(--color-amarillo);
+    border-radius: 1rem;
+    box-shadow: 3px 4px 0 1px var(--color-marron);
+}
+
+.contenedor-tabla h1 {
+    font-size: 3rem;
+    font-style: italic;
+    text-align: center;
+    color: var(--color-gris);
+    text-shadow: 1px 1px 2px var(--color-amarillo);
+    padding: 1rem 0 0.5rem;
+}
+
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-family: Poppins;
+}
+
+th, td {
+    background-color: var(--color-gris);
+    border: 4px solid var(--color-auzl-oscuro);
+    padding: 0.5rem;
+    text-align: center;
+}
+
+th {
+    font-size: 1.25rem;
+}
+
+td a{
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    color: var(--color-gris);
+    background-color: var(--color-marron);
+    border: 2px solid var(--color-negro);
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+td a:hover {
+    color: var(--color-amarillo);
+    background-color: var(--color-gris);
 }

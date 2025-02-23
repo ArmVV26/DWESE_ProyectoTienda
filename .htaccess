@@ -1,0 +1,15 @@
+# Bloque que verifica si el módulo "mod_rewrite" este habilitado.
+<IfModule mod_rewrite.c>
+
+    # Se activa el motor de reescritura.
+    RewriteEngine on
+
+    # Se evita que se reescriban solicitudes a archivos o directorios reales.
+    RewriteCond %{SCRIPT_FILENAME} !-d
+    RewriteCond %{SCRIPT_FILENAME} !-f
+
+    # Se define una regla de reescritura que redirige todas las solicitudes a la carpeta public.
+    RewriteRule ^$ public/ [L]
+    RewriteRule (.*) public/$1 [L]
+
+</IfModule>

@@ -1,11 +1,11 @@
 <?php
     // Defino el namespace
-    namespace Lib;
+    namespace lib;
 
     // Defino la clase Router
     class Router {
         // Atributos
-        private $rutas = [];
+        private static $rutas = [];
 
         /**
          * Método para agregar una ruta a la lista de rutas
@@ -14,7 +14,7 @@
 
             // Elimino los espacios en blanco
             $accion = trim($accion, '/');
-            
+
             // Agrego la ruta a la lista
             self::$rutas[$metodo][$accion] = $controller;
         }
@@ -28,8 +28,12 @@
             // Obtengo el método de la petición
             $metodo = $_SERVER['REQUEST_METHOD']; 
             
+            $BASE_PATH = '/xampp-web/DWESE_ProyectoTienda';
+
+            $accion = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
             // Obtengo la acción de la petición
-            $accion = preg_replace('/hiperarmando/','',$_SERVER['REQUEST_URI']);
+            $accion = preg_replace('/^' . preg_quote($BASE_PATH, '/') . '/', '', $accion);
             $accion = trim($accion, '/');
 
             // Verifico si la acción tiene un parámetro
@@ -43,11 +47,14 @@
                 $param = $match[0];
                 $accion=preg_replace('/'.$match[0].'/',':id',$accion);
             }
-            
-            // Verifico si la acción existe en la lista de rutas y si no existe muestro un error
-            $callback = self::$routes[$metodo][$accion];
-        
-            // Si la acción existe en la lista de rutas ejecuto la función asociada a la acción
-            echo call_user_func($callback, $param);
+
+            // Si existe, ejecuta la función correspondiente a la ruta
+            $callback = self::$rutas[$metodo][$accion] ?? null;
+            if ($callback) {
+                echo call_user_func($callback, $param);
+            // Si no existe, muestra un error 
+            } else {
+                echo "La ruta <strong>$accion</strong> no se encontró.";
+            }
         }
     }

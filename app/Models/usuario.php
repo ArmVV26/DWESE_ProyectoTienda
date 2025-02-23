@@ -2,7 +2,9 @@
     // Defino el namespace
     namespace Models;
 
-    // Defino la clase Usuario
+    /**
+     * Clase Usuario
+     */
     class Usuario {
         // Atributos
         private ?int $id = null;
@@ -139,8 +141,8 @@
          */
         public static function fromArray(array $usuario): self {
             return new self(
-                $usuario['nombre'],
-                $usuario['apellidos'],
+                $usuario['nombre'] ?? '',
+                $usuario['apellidos'] ?? '',
                 $usuario['email'],
                 $usuario['password'],
                 $usuario['rol'] ?? 'cliente'

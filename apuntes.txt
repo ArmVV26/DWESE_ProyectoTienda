@@ -12,3 +12,84 @@ COSAS DEL TEMA:
     - Services y Repository
     - Config Composer
     - URL amigable -> BASE_URL
+    - Router
+
+POR DONDE ME QUEDO ->
+    - Boton, vista y funcion de editar el usuario
+
+ESTRUCTURA:
+/hiperarmando/                                                         
+├─/app/                              
+│   ├─/Controllers/                  
+│   │   ├─/CategoriaController.php   
+│   │   └─/UsuarioController.php     
+│   │                                
+│   ├─/Models/                       
+│   │   ├─/Categoria.php             
+│   │   └─/Usuario.php               
+│   │                                
+│   ├─/Repositories/                 
+│   │   ├─/CategoriaRepository.php   
+│   │   └─/UsuarioRepository.php     
+│   │                                
+│   ├─/Services/                     
+│   │   ├─/CategoriaServices.php     
+│   │   └─/UsuarioServices.php       
+│   │                                
+│   ├─/Views/  
+|   |   ├─/admin/ 
+│   │   │   ├─/mostrarUsuarios.php            
+│   │   │   ├─/editarUsuarios.php            
+|   |   |                   
+│   │   ├─/carrito/                  
+│   │   │                            
+│   │   ├─/categoria/                
+│   │   │                            
+│   │   ├─/layout/                   
+│   │   │   ├─/footer.php            
+│   │   │   ├─/header.php            
+│   │   │   └─/layout.php            
+│   │   │                            
+│   │   ├─/pedido/                   
+│   │   │                            
+│   │   ├─/producto/                 
+│   │   │                            
+│   │   └─/usuario/                  
+│   │       ├─/formularioLogin.php   
+│   │       └─/formularioRegistro.php
+│   │                                
+│   └─/.htaccess                     
+│                                    
+├─/config/                           
+│   ├─/config.php                    
+│   ├─/render.php                    
+│   └─/rutas.php                     
+│                                    
+├─/database/                         
+│   └─/database.sql                  
+│                                    
+├─/lib/                              
+│   ├─/database.php                  
+│   └─/router.php                    
+│                                    
+├─/public/                           
+│   ├─/css/                          
+│   │   └─/estilo.css                
+│   │                                
+│   ├─/media/                        
+│   │   ├─/fonts/                    
+│   │   │   ├─/Lato-Regular.ttf      
+│   │   │   └─/Poppins-Regular.ttf   
+│   │   │                            
+│   │   └─/img/                      
+│   │       ├─/Logo-HiperArmando.ico 
+│   │       └─/Logo-HiperArmando.svg 
+│   │                                
+│   ├─/.htaccess                     
+│   └─/index.php                     
+│                                    
+├─/.env                              
+├─/.htaccess                         
+├─/composer.json                     
+├─/composer.lock                     
+└─/README.md                         

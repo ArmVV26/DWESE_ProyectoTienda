@@ -37,4 +37,13 @@
         public function getConexion(): ?PDO {
             return $this->conexion;
         }
+
+        /**
+         * Método para obtener el último id insertado
+         * 
+         * @return int El último id insertado
+         */
+        public function ultimotId(): int {
+            return $this->conexion->lastInsertId();
+        }
     }
