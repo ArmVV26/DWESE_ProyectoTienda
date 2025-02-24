@@ -1,14 +1,16 @@
 <?php
 
     // Importo las clases necesarias
-    use App\Controllers\UsuarioController;
+    use Controllers\HomeController;
+    use Controllers\UsuarioController;
+    use Controllers\CategoriaController;
 
     // Importo la clase Router
     use Lib\Router;
 
     // Defino la ruta por defecto
     Router::add('GET', '', function(){
-        return (new UsuarioController())->registrar();
+        return (new HomeController())->index();
     });
 
     // RUTAS USUARIOS
@@ -37,6 +39,30 @@
     // Ruta para eliminar un usuario
     Router::add('GET', 'usuario/eliminar', function(){
         return (new UsuarioController())->eliminarUsuario();
+    });
+    // Ruta para actualizar/editar un usuario
+    Router::add('GET', 'usuario/actualizarUsuario', function(){
+        return (new UsuarioController())->actualizarUsuario();
+    });
+    Router::add('POST', 'usuario/actualizarUsuario', function(){
+        return (new UsuarioController())->actualizarUsuario();
+    });
+
+    // RUTAS CATEGORÍAS
+    // Ruta para crear una categoría
+    Router::add('GET', 'admin/crearCategoria', function(){
+        return (new CategoriaController())->crearCategoria();
+    });
+    Router::add('POST', 'admin/crearCategoria', function(){
+        return (new CategoriaController())->crearCategoria();
+    });
+    // Ruta para mostrar las categorías
+    Router::add('GET', 'admin/mostrarCategorias', function(){
+        return (new CategoriaController())->mostrarCategorias();
+    });
+    // Ruta para eliminar una categoría
+    Router::add('GET', 'categoria/eliminarCategoria', function(){
+        return (new CategoriaController())->eliminarCategoria();
     });
 
     // Defino la ruta por defecto

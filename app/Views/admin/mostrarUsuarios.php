@@ -33,7 +33,7 @@
                                  Eliminar</a>";
 
                     } 
-                    echo "          <a href=''>Editar</a>
+                    echo "          <a href='". URL_BASE ."usuario/actualizarUsuario?id=". $usuario['id'] ."'>Editar</a>
                                 </td>
                             </tr>
                         ";

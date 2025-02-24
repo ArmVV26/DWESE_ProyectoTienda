@@ -9,6 +9,10 @@
      * Servicios de Usuario
      * 1. Crear un nuevo usuario
      * 2. Iniciar sesión
+     * 3. Mostrar los usuarios
+     * 4. Eliminar un usuario
+     * 5. Obtener un usuario por su id
+     * 6. Actualizar un usuario
      */
     class UsuarioServices {
         // Atributos
@@ -57,5 +61,24 @@
          */
         public function eliminarUsuario($id) {
             return $this->usuarioRepository->eliminarUsuario($id);
+        }
+
+        /**
+         * Método para obtener un usuario por su id
+         * 
+         * @param int $id El id del usuario
+         */
+        public function obtenerPorId($id) {
+            return $this->usuarioRepository->obtenerPorId($id);
+        }
+
+        /**
+         * Método para acualizar un usuario
+         * 
+         * @param array $datos Los datos del usuario
+         * @return bool True si se ha actualizado correctamente, false en caso contrario
+         */
+        public function acualizarUsuario($datos) {
+            return $this->usuarioRepository->acualizarUsuario($datos);
         }
     }

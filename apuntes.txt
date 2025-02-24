@@ -2,17 +2,28 @@ echo "Me cago me meo, me tiro un peo";
 
 COSAS A TENER EN CUENTA:
 	- (Linea 53) Por ahora en UsuarioRepository.php no asigno el id de la ultima inserccion.
+    - (Linea 179) Cambiar el header por un render de la pagina principal.
+    - Tengo que cambiar que cada vez que edite un perfil (sea cliente o admin), se tiene que actualizar
+        la sesion de inicio de sesion, para que se acualice el nombre y el rol (principalmente)
 
 
 COMANDOS
     - composer init
     - composer require
+    - composer dump-autoload
 
 COSAS DEL TEMA:
     - Services y Repository
     - Config Composer
     - URL amigable -> BASE_URL
     - Router
+
+% DE COSAS HECHAS:
+    - Usuarios -> 99%
+    - Categorias -> 99%
+    - Productos -> 0%
+    - Pedidos -> 0%
+    - ¿Lineas-Pedidos? -> 0%
 
 POR DONDE ME QUEDO ->
     - Boton, vista y funcion de editar el usuario

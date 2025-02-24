@@ -90,10 +90,10 @@ a:hover {
 .menu-user .submenu {
     display: none;
     position: absolute;
-    width: 10rem;
+    width: 11rem;
     text-align: left;
     top: 100%;
-    left: 1rem;
+    left: 0.5rem;
     right: 0;
     background-color: var(--color-gris);
     border: 2px solid var(--color-amarillo);
@@ -299,4 +299,23 @@ td a{
 td a:hover {
     color: var(--color-amarillo);
     background-color: var(--color-gris);
+}
+
+/* Menu Secundario Index */
+.menu-secundario {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--color-gris);
+}
+
+.menu-secundario a {
+    color: var(--color-negro);
+    font-weight: bold;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.25s;
+}
+
+.menu-secundario a:hover {
+    color: var(--color-amarillo);
 }

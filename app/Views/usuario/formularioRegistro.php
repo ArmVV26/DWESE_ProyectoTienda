@@ -38,11 +38,11 @@
             <!-- Muestro un menú de selección del rol, si hay una sesion iniciada de un usuario admin  -->
             <?php
             if (isset($_SESSION['inicioSesion']) && $_SESSION['inicioSesion']['rol'] === 'admin') {
-                    echo "<label for='rol'>Rol:</label>
+                    echo "<label for='rol'>Rol</label>
                         <select name='data[rol]' id='rol'>
                             <option value='cliente'>Cliente</option>
                             <option value='admin'>Admin</option>
-                        </select><br>";
+                        </select>";
                 }
             ?>
 

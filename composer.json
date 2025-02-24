@@ -1,9 +1,9 @@
-{
+    {
     "name": "armando/dwese_proyecto-tienda",
     "description": "Proyecto de la tienda HiperArmando",
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
+            "Usuario\\Tienda\\": "app/",
             "Lib\\": "lib/",
             "Controllers\\": "./app/Controllers/",
             "Models\\": "./app/Models/",
