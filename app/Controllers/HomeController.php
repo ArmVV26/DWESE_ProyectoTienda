@@ -26,7 +26,7 @@
          * Método para mostrar las categorías
          */
         public function index() {
-            // Llamo al método del servicio
+            // Llamo al método del servicio para mostrar las categorías
             $categorias = $this->categoriaService->mostrarCategorias();
 
             // Incluyo la vista

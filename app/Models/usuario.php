@@ -132,7 +132,8 @@
         public function setRol(string $rol): void {
             $this->rol = $rol;
         }
-
+    
+        // Métodos
         /**
          * Método para convertir un array en una instancia Usuario
          * 

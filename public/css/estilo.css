@@ -189,7 +189,7 @@ label {
     color: var(--color-gris);
 }
 
-input,select {
+input,select,textarea {
     font-family: Poppins;
     font-size: 1.25rem;
     padding: 0.25rem;
@@ -201,7 +201,14 @@ input,select {
     transition: all 0.25s;
 }
 
-input:focus, select:focus {
+textarea {
+    height: 15rem;
+    resize: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+input:focus, select:focus, textarea:focus {
     border: 2px solid var(--color-amarillo);
 }
 
@@ -225,6 +232,10 @@ input[type="submit"]:hover {
 .exito {
     font-size: 1.25rem;
     color: var(--color-amarillo);
+}
+
+.exitoso {
+    margin-bottom: 2rem;
 }
 
 .fallo {

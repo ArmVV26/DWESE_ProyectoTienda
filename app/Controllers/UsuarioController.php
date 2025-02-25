@@ -15,6 +15,11 @@
      * 2. Registrar un usuario en la base de datos
      * 3. Validar los datos del formulario de inicio de sesión
      * 4. Iniciar sesión en la aplicación
+     * 5. Cerrar la sesión
+     * 6. Mostrar los usuarios
+     * 7. Eliminar un usuario
+     * 8. Validar los datos del formulario de actualización
+     * 9. Actualizar/editar un usuario
      */
     class UsuarioController {
         // Atributos
@@ -26,6 +31,7 @@
             $this->usuarioServices = new UsuarioServices();
         }
         
+        // Métodos
         /**
          * Método para validar los datos del formulario de registro
          * 
@@ -93,9 +99,12 @@
                         // Si se ha creado el usuario, muestro un mensaje de éxito
                         if ($crearUser) {
                             $_SESSION['registro'] = [
-                                'mensaje' => "Usuario registrado correctamente.",
+                                'mensaje' => "Registro Exitoso",
                                 'tipo' => 'exito'
                             ];
+                            // Renderizo la vista del formulario de inicio de sesión
+                            render('../Views/usuario/registroExitoso', ['titulo' => 'Registro Exitoso']);
+                            exit();
 
                         // Si no se ha creado el usuario, muestro un mensaje de error
                         } else {
@@ -124,7 +133,7 @@
             }
 
             // Renderizo la vista del formulario de registro
-            render('../Views/usuario/formularioRegistro', ['titulo' => 'Inicio de Sesión']);
+            render('../Views/usuario/formularioRegistro', ['titulo' => 'Formulario de Registro']);
             exit();
         }
 

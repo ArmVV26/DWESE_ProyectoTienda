@@ -4,6 +4,7 @@
     use Controllers\HomeController;
     use Controllers\UsuarioController;
     use Controllers\CategoriaController;
+    use Controllers\ProductoController;
 
     // Importo la clase Router
     use Lib\Router;
@@ -19,6 +20,13 @@
         return (new UsuarioController())->registrar();
     });
     Router::add('POST', 'usuario/formularioRegistro', function(){
+        return (new UsuarioController())->registrar();
+    });
+    // Ruta para mostrar el formulario de registro exitoso
+    Router::add('GET', 'usuario/registroExitoso', function(){
+        return (new UsuarioController())->registrar();
+    });
+    Router::add('POST', 'usuario/registroExitoso', function(){
         return (new UsuarioController())->registrar();
     });
     // Ruta para iniciar sesión
@@ -63,6 +71,15 @@
     // Ruta para eliminar una categoría
     Router::add('GET', 'categoria/eliminarCategoria', function(){
         return (new CategoriaController())->eliminarCategoria();
+    });
+
+    // RUTAS PRODUCTOS
+    // Ruta para crear un producto
+    Router::add('GET', 'admin/crearProducto', function(){
+        return (new ProductoController())->crearProducto();
+    });
+    Router::add('POST', 'admin/crearProducto', function(){
+        return (new ProductoController())->crearProducto();
     });
 
     // Defino la ruta por defecto

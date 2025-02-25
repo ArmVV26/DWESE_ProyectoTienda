@@ -12,8 +12,8 @@
     /**
      * Controlador de Categoría
      * 1. Validar los datos del formulario de categoría
-     * 2. Registrar una categoría en la base de datos
-     * 3. Actualizar una categoría en la base de datos
+     * 2. Crear una categoría en la base de datos
+     * 3. Mostrar las categorías
      * 4. Eliminar una categoría en la base de datos
      */
     class CategoriaController {
@@ -50,7 +50,7 @@
         }
 
         /**
-         * Método para registrar una categoría en la base de datos
+         * Método para crear una categoría
          * 
          * @return void
          */
@@ -66,25 +66,25 @@
 
                         if ($crearCategoria) {
                             $_SESSION['registro'] = [
-                                'mensaje' => 'La categoría se ha registrado correctamente',
+                                'mensaje' => 'Categoría creada correctamente',
                                 'tipo' => 'exito'
                             ];
                         } else {
                             $_SESSION['registro'] = [
-                                'mensaje' => 'Error al registrar la categoría',
+                                'mensaje' => 'Error al crear la categoría',
                                 'tipo' => 'fallo'
                             ];
                         }
                     } else {
                         $_SESSION['registro'] = [
-                            'mensaje' => 'Error al registrar la categoría',
+                            'mensaje' => 'Error al crear la categoría',
                             'tipo' => 'fallo'
                         ];
                         $_SESSION['errores'] = $this->errores;
                     }
                 } else {
                     $_SESSION['registro'] = [
-                        'mensaje' => 'Error al registrar la categoría',
+                        'mensaje' => 'Error al crear la categoría',
                         'tipo' => 'fallo'
                     ];
                 }

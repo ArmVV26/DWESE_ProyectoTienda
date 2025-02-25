@@ -34,8 +34,10 @@
                                     <li><a href='".URL_BASE."'>Perfil</a></li>
                                     <li><a href='".URL_BASE."admin/mostrarUsuarios'>Mostrar Usuarios</a></li>
                                     <li><a href='".URL_BASE."admin/mostrarCategorias'>Mostrar Categorias</a></li>
-                                    <li><a href='".URL_BASE."admin/crearCategoria'>Crear Categoria</a></li>
+                                    <li><a href='".URL_BASE."admin/mostrarProductos'>Mostrar Productos</a></li>
                                     <li><a href='".URL_BASE."usuario/formularioRegistro'>Crear Usuario</a></li>
+                                    <li><a href='".URL_BASE."admin/crearCategoria'>Crear Categoria</a></li>
+                                    <li><a href='".URL_BASE."admin/crearProducto'>Crear Producto</a></li>
                                     <li><a href='".URL_BASE."usuario/cerrarSesion'>Cerrar Sesion</a></li>
                                 </ul>
                             </li>
