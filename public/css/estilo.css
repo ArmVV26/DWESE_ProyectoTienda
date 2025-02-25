@@ -83,6 +83,10 @@ a:hover {
     font-weight: bold;
 }
 
+.logo {
+    padding: 0;
+}
+
 .menu-user {
     position: relative;
 }
@@ -312,6 +316,13 @@ td a:hover {
     background-color: var(--color-gris);
 }
 
+td.descripcion {
+    max-width: 15rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 /* Menu Secundario Index */
 .menu-secundario {
     display: flex;
@@ -329,4 +340,78 @@ td a:hover {
 
 .menu-secundario a:hover {
     color: var(--color-amarillo);
+}
+
+/* Estilos de los Productos */
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 60%;
+    margin: auto;
+    gap: 2rem;
+    padding: 2rem;
+    justify-items: center;
+}
+
+.producto {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-gris);
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 2px 5px var(--color-amarillo);
+}
+
+.producto figure {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    cursor: pointer;
+}
+
+.producto figure img {
+    width: 20rem;
+    height: 20rem;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.producto figure:hover img {
+    transform: scale(1.1);
+}
+
+.producto section {
+    flex: 1;
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--color-negro);
+    font-family: Lato;
+}
+
+.producto section .precio {
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 75%;
+    color: var(--color-negro);
+    margin: 0;
+}
+  
+.producto section h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--color-negro);
+}
+  
+.producto section .descripcion {
+    flex: 1;
+    font-size: 1rem;
+    color: var(--color-marron);
+    
+    max-width: 300px;    
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

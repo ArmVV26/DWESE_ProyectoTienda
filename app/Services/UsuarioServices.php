@@ -67,6 +67,7 @@
          * Método para obtener un usuario por su id
          * 
          * @param int $id El id del usuario
+         * @return array Devuelve un array con los datos del usuario
          */
         public function obtenerPorId($id) {
             return $this->usuarioRepository->obtenerPorId($id);

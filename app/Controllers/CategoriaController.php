@@ -71,20 +71,20 @@
                             ];
                         } else {
                             $_SESSION['registro'] = [
-                                'mensaje' => 'Error al crear la categoría',
+                                'mensaje' => 'Error al crear la categoría: La categoría ya existe',
                                 'tipo' => 'fallo'
                             ];
                         }
                     } else {
                         $_SESSION['registro'] = [
-                            'mensaje' => 'Error al crear la categoría',
+                            'mensaje' => 'Error al crear la categoría:',
                             'tipo' => 'fallo'
                         ];
                         $_SESSION['errores'] = $this->errores;
                     }
                 } else {
                     $_SESSION['registro'] = [
-                        'mensaje' => 'Error al crear la categoría',
+                        'mensaje' => 'Error al crear la categoría: Datos vacíos',
                         'tipo' => 'fallo'
                     ];
                 }
@@ -108,27 +108,27 @@
         /**
          * Método para eliminar una categoría en la base de datos
          * 
+         * @param int|null $id El id de la categoría
          * @return void
          */
-        public function eliminarCategoria() {
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
+        public function eliminarCategoria($id = null) {
+            if (isset($id)) {
                 $eliminarCategoria = $this->categoriaServices->eliminarCategoria($id);
 
                 if ($eliminarCategoria) {
-                    $_SESSION['registro'] = [
+                    $_SESSION['eliminar'] = [
                         'mensaje' => 'La categoría se ha eliminado correctamente',
                         'tipo' => 'exito'
                     ];
                 } else {
-                    $_SESSION['registro'] = [
-                        'mensaje' => 'Error al eliminar la categoría',
+                    $_SESSION['eliminar'] = [
+                        'mensaje' => 'Error al eliminar la categoría: La categoría no existe',
                         'tipo' => 'fallo'
                     ];
                 }
             } else {
-                $_SESSION['registro'] = [
-                    'mensaje' => 'Error al eliminar la categoría',
+                $_SESSION['eliminar'] = [
+                    'mensaje' => 'Error al eliminar la categoría: Datos incorrectos',
                     'tipo' => 'fallo'
                 ];
             }

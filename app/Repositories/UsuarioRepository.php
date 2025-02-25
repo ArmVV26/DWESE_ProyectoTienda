@@ -139,7 +139,6 @@
 
                 // Devuelvo los usuarios en un array
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
             } catch (PDOException $e) {
                 return [];
             }
@@ -166,7 +165,6 @@
                 $stmt->execute();
 
                 return true;
-
             } catch (PDOException $e) {
                 return false;
             }
@@ -194,7 +192,6 @@
                 $stmt->execute();
 
                 return $stmt->fetch(PDO::FETCH_ASSOC);
-
             } catch (PDOException $e) {
                 return [];
             }

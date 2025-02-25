@@ -9,10 +9,15 @@
     // Importo la clase Router
     use Lib\Router;
 
+    // RUTAS GENERALES
     // Defino la ruta por defecto
     Router::add('GET', '', function(){
         return (new HomeController())->index();
     });
+    Router::add('GET', 'categoria/:id', function($id){
+        return (new HomeController())->index($id);
+    });
+
 
     // RUTAS USUARIOS
     // Ruta para registrar un usuario
@@ -45,15 +50,15 @@
         return (new UsuarioController())->mostrarUsuarios();
     });
     // Ruta para eliminar un usuario
-    Router::add('GET', 'usuario/eliminar', function(){
-        return (new UsuarioController())->eliminarUsuario();
+    Router::add('GET', 'usuario/eliminar/:id', function($id){
+        return (new UsuarioController())->eliminarUsuario($id);
     });
     // Ruta para actualizar/editar un usuario
-    Router::add('GET', 'usuario/actualizarUsuario', function(){
-        return (new UsuarioController())->actualizarUsuario();
+    Router::add('GET', 'usuario/actualizarUsuario/:id', function($id){
+        return (new UsuarioController())->actualizarUsuario($id);
     });
-    Router::add('POST', 'usuario/actualizarUsuario', function(){
-        return (new UsuarioController())->actualizarUsuario();
+    Router::add('POST', 'usuario/actualizarUsuario/:id', function($id){
+        return (new UsuarioController())->actualizarUsuario($id);
     });
 
     // RUTAS CATEGORÍAS
@@ -69,8 +74,8 @@
         return (new CategoriaController())->mostrarCategorias();
     });
     // Ruta para eliminar una categoría
-    Router::add('GET', 'categoria/eliminarCategoria', function(){
-        return (new CategoriaController())->eliminarCategoria();
+    Router::add('GET', 'categoria/eliminar/:id', function($id){
+        return (new CategoriaController())->eliminarCategoria($id);
     });
 
     // RUTAS PRODUCTOS
@@ -80,6 +85,21 @@
     });
     Router::add('POST', 'admin/crearProducto', function(){
         return (new ProductoController())->crearProducto();
+    });
+    // Ruta para mostrar los productos
+    Router::add('GET', 'admin/mostrarProductos', function(){
+        return (new ProductoController())->mostrarProductos();
+    });
+    // Ruta para eliminar un producto
+    Router::add('GET', 'producto/eliminar/:id', function($id){
+        return (new ProductoController())->eliminarProducto($id);
+    });
+    // Ruta para actualizar/editar un producto
+    Router::add('GET', 'admin/actualizarProducto/:id', function($id){
+        return (new ProductoController())->actualizarProducto($id);
+    });
+    Router::add('POST', 'admin/actualizarProducto/:id', function($id){
+        return (new ProductoController())->actualizarProducto($id);
     });
 
     // Defino la ruta por defecto

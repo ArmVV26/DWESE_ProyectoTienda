@@ -10,7 +10,9 @@
 
     /**
      * Repositorio de Categoría
-     * 1. Mostrar las categorías
+     * 1. Crear una nueva categoría
+     * 2. Mostrar las categorías
+     * 3. Eliminar una categoría
      */
     class CategoriaRepository {
         // Atributos

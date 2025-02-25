@@ -36,7 +36,7 @@
         ?>
 
         <!-- Formulario de Actualización -->
-        <form action="<?=URL_BASE ?>usuario/actualizarUsuario?id=<?=$usuario['id']?>" method="POST">
+        <form action="<?=URL_BASE ?>usuario/actualizarUsuario/<?=$usuario['id']?>" method="POST">
             <input type="hidden" name="data[id]" value="<?=$usuario['id']?>">
 
             <label for="nombre">Nombre</label>

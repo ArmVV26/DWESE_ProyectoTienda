@@ -19,7 +19,7 @@ CREATE TABLE usuarios (
 DROP TABLE IF EXISTS categorias;
 CREATE TABLE categorias (
     id INT(255) AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL
+    nombre VARCHAR(100) UNIQUE NOT NULL
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Tabla de productos
@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS productos;
 CREATE TABLE productos (
     id INT(255) AUTO_INCREMENT PRIMARY KEY,
     categoria_id INT(255),
-    nombre VARCHAR(255) NOT NULL,
+    nombre VARCHAR(255) UNIQUE NOT NULL,
     descripcion TEXT,
     precio DECIMAL(10,2) NOT NULL,
     stock INT(255) NOT NULL,
@@ -79,14 +79,14 @@ INSERT INTO categorias (nombre) VALUES
 
 -- Insertar Productos
 INSERT INTO productos (categoria_id, nombre, descripcion, precio, stock, oferta, fecha, imagen) VALUES
-(1, 'Camiseta Nike', 'Camiseta de la marca Nike', 20.00, 100, 'si', '2025-02-01', 'camiseta-nike.jpg'),
-(1, 'Camiseta Adidas', 'Camiseta de la marca Adidas', 25.00, 100, 'no', '2025-02-01', 'camiseta-adidas.jpg'),
-(2, 'Pantalón Nike', 'Pantalón de la marca Nike', 40.00, 100, 'si', '2025-02-01', 'pantalon-nike.jpg'),
-(2, 'Pantalón Adidas', 'Pantalón de la marca Adidas', 45.00, 100, 'no', '2025-02-01', 'pantalon-adidas.jpg'),
-(3, 'Zapatillas Nike', 'Zapatillas de la marca Nike', 60.00, 100, 'si', '2025-02-01', 'zapatillas-nike.jpg'),
-(3, 'Zapatillas Adidas', 'Zapatillas de la marca Adidas', 65.00, 100, 'no', '2025-02-01', 'zapatillas-adidas.jpg'),
-(4, 'Gorra Nike', 'Gorra de la marca Nike', 15.00, 100, 'si', '2025-02-01', 'gorra-nike.jpg'),
-(4, 'Gorra Adidas', 'Gorra de la marca Adidas', 20.00, 100, 'no', '2025-02-01', 'gorra-adidas.jpg');
+(1, 'Camiseta Nike', 'Camiseta de la marca Nike', 20.00, 100, 'si', '2025-02-01', 'Camiseta-Nike.jpg'),
+(1, 'Camiseta Adidas', 'Camiseta de la marca Adidas', 25.00, 100, 'no', '2025-02-01', 'Camiseta-Adidas.jpg'),
+(2, 'Pantalón Nike', 'Pantalón de la marca Nike', 40.00, 100, 'si', '2025-02-01', 'Pantalon-Nike.jpg'),
+(2, 'Pantalón Adidas', 'Pantalón de la marca Adidas', 45.00, 100, 'no', '2025-02-01', 'Pantalon-Adidas.jpg'),
+(3, 'Zapatillas Nike', 'Zapatillas de la marca Nike', 60.00, 100, 'si', '2025-02-01', 'Zapatillas-Nike.jpg'),
+(3, 'Zapatillas Adidas', 'Zapatillas de la marca Adidas', 65.00, 100, 'no', '2025-02-01', 'Zapatillas-Adidas.jpg'),
+(4, 'Gorra Nike', 'Gorra de la marca Nike', 15.00, 100, 'si', '2025-02-01', 'Gorra-Nike.jpg'),
+(4, 'Gorra Adidas', 'Gorra de la marca Adidas', 20.00, 100, 'no', '2025-02-01', 'Gorra-Adidas.jpg');
 
 -- Insertar Pedidos
 INSERT INTO pedidos (usuario_id, provincia, localidad, direccion, coste, estado, fecha, hora) VALUES

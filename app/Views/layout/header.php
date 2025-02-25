@@ -9,7 +9,9 @@
 </head>
 <body>
     <header>
-        <img class="logo-web" src="<?=URL_BASE ?>public/media/img/Logo-HiperArmando.svg" alt="Logo de la Tienda">
+        <a href="<?=URL_BASE?>" class="logo">
+            <img class="logo-web" src="<?=URL_BASE ?>public/media/img/Logo-HiperArmando.svg" alt="Logo de la Tienda">
+        </a>
         <nav class="menu">
             <ul>
                 <li><a href="<?=URL_BASE?>">Inicio</a></li>
@@ -20,7 +22,7 @@
                                 <a href=''>". $_SESSION['inicioSesion']['nombre'] ."</a>
                                 <ul class='submenu'>
                                     <li><a href='".URL_BASE."'>Perfil</a></li>
-                                    <li><a href='".URL_BASE."usuario/actualizarUsuario?id=".$_SESSION['inicioSesion']['id']."'>Editar Perfil</a></li>
+                                    <li><a href='".URL_BASE."usuario/actualizarUsuario/".$_SESSION['inicioSesion']['id']."'>Editar Perfil</a></li>
                                     <li><a href='".URL_BASE."usuario/cerrarSesion'>Cerrar Sesion</a></li>
                                 </ul>
                             </li>

@@ -2,6 +2,11 @@
         <h1> Tabla con todos los Usuarios </h1>
 
         <?php
+            if (isset($_SESSION['eliminar'])) {
+                echo "<p class='". $_SESSION['eliminar']['tipo'] ."'>" . $_SESSION['eliminar']['mensaje'] . "</p>";
+                unset($_SESSION['eliminar']);
+            }   
+
             if (!empty($usuarios)) {
                 echo "<table>
                         <thead>
@@ -28,12 +33,12 @@
                     ";
 
                     if ($_SESSION['inicioSesion']['id'] !== $usuario['id']) {
-                        echo "<a href='". URL_BASE ."usuario/eliminar?id=". $usuario['id'] ."'
+                        echo "<a href='". URL_BASE ."usuario/eliminar/". $usuario['id'] ."'
                                  onclick='return check()'>
                                  Eliminar</a>";
 
                     } 
-                    echo "          <a href='". URL_BASE ."usuario/actualizarUsuario?id=". $usuario['id'] ."'>Editar</a>
+                    echo "          <a href='". URL_BASE ."usuario/actualizarUsuario/". $usuario['id'] ."'>Editar</a>
                                 </td>
                             </tr>
                         ";

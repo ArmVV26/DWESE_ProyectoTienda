@@ -109,7 +109,7 @@
                         // Si no se ha creado el usuario, muestro un mensaje de error
                         } else {
                             $_SESSION['registro'] = [
-                                'mensaje' => "Error al registrar el usuario.",
+                                'mensaje' => "Error al registrar el usuario: Email ya registrado",
                                 'tipo' => 'fallo'
                             ];
                         }
@@ -126,7 +126,7 @@
                 // Si no se han recibido los datos, muestro un mensaje de error
                 } else {
                     $_SESSION['registro'] = [
-                        'mensaje' => "Error al registrar el usuario.",
+                        'mensaje' => "Error al registrar el usuario: Datos no recibidos",
                         'tipo' => 'fallo'
                     ];
                 }
@@ -189,7 +189,7 @@
                             exit();
                         } else {
                             $_SESSION['login'] = [
-                                'mensaje' => "Error al iniciar sesión. Opcion 1",
+                                'mensaje' => "Error al iniciar sesión: Usuario o contraseña incorrectos",
                                 'tipo' => 'fallo'
                             ];
                         }
@@ -202,7 +202,7 @@
                     }
                 } else {
                     $_SESSION['login'] = [
-                        'mensaje' => "Error al iniciar sesión. Opcion 2",
+                        'mensaje' => "Error al iniciar sesión: Datos no recibidos",
                         'tipo' => 'fallo'
                     ];
                 }
@@ -238,23 +238,32 @@
         /**
          * Método para eliminar un usuario
          * 
+         * @param int|null $id El id del usuario
          * @return void
          */
-        public function eliminarUsuario() {
+        public function eliminarUsuario($id = null) {
             // Compruebo si se ha recibido el id del usuario
-            if (isset($_GET['id'])) {
+            if (isset($id)) {
                 // Recojo el id del usuario y lo elimino
-                $id = $_GET['id'];
                 $eliminar = $this->usuarioServices->eliminarUsuario($id);
 
                 // Muestro un mensaje de éxito o error al eliminar el usuario
                 if ($eliminar) {
-                    $_SESSION['eliminar'] = "Usuario eliminado correctamente.";
+                    $_SESSION['eliminar'] = [
+                        'mensaje' => "Usuario eliminado correctamente",
+                        'tipo' => 'exito'
+                    ];
                 } else {
-                    $_SESSION['eliminar'] = "Error al eliminar el usuario.";
+                    $_SESSION['eliminar'] = [
+                        'mensaje' => "Error al eliminar el usuario: El usuario no existe",
+                        'tipo' => 'fallo'
+                    ];
                 }
             } else {
-                $_SESSION['eliminar'] = "Error al eliminar el usuario.";
+                $_SESSION['eliminar'] = [
+                    'mensaje' => "Error al eliminar el usuario: Datos incorrectos",
+                    'tipo' => 'fallo'
+                ];
             }
 
             // Redirijo a la vista de mostrar usuarios
@@ -305,9 +314,10 @@
         /**
          * Método para actualizar/editar un usuario
          * 
+         * @param int|null $id El id del usuario
          * @return void
          */
-        public function actualizarUsuario() {
+        public function actualizarUsuario($id = null) {
             if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
                 if (isset($_POST['data'])) {
@@ -334,40 +344,39 @@
                             }
                         } else {
                             $_SESSION['editar'] = [
-                                'mensaje' => "Error al actualizar el usuario.",
+                                'mensaje' => "Error al actualizar el usuario: El usuario no existe",
                                 'tipo' => 'fallo'
                             ];
                         }
                     } else {
                         $_SESSION['editar'] = [
-                            'mensaje' => "Error al actualizar el usuario.",
+                            'mensaje' => "Error al actualizar el usuario: Datos incorrectos",
                             'tipo' => 'fallo'
                         ];
                     }
                 } else {
                     $_SESSION['editar'] = [
-                        'mensaje' => "Error al actualizar el usuario.",
+                        'mensaje' => "Error al actualizar el usuario: Datos no recibidos",
                         'tipo' => 'fallo'
                     ];
                 }
             }
             
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
+            if (isset($id)) {
                 $usuario = $this->usuarioServices->obtenerPorId($id);
 
                 if($usuario) {
                     render('../Views/usuario/actualizarUsuario', ['titulo' => 'Editar Usuario', 'usuario' => $usuario]);
-
+                    exit();
                 } else {
                     $_SESSION['editar'] = [
-                        'mensaje' => "Error al editar el usuario.",
+                        'mensaje' => "Error al editar el usuario: El usuario no existe",
                         'tipo' => 'fallo'
                     ];
                 }
             } else {
                 $_SESSION['editar'] = [
-                    'mensaje' => "Error al editar el usuario.",
+                    'mensaje' => "Error al editar el usuario: Datos incorrectos",
                     'tipo' => 'fallo'
                 ];
             }

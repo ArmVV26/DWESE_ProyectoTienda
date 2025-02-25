@@ -7,7 +7,9 @@
 
     /**
      * Servicios de Categoría
-     * 1. Mostrar las categorías
+     * 1. Crear una categoría
+     * 2. Mostrar las categorías
+     * 3. Eliminar una categoría
      */
     class CategoriaServices {
         // Atributos

@@ -4,6 +4,7 @@ COSAS A TENER EN CUENTA:
     - ¿(Linea 179) Cambiar el header por un render de la pagina principal.?
     - Tengo que cambiar que cada vez que edite un perfil (sea cliente o admin), se tiene que actualizar
         la sesion de inicio de sesion, para que se acualice el nombre y el rol (principalmente)
+    - Si se actualiza el correo o la contraseña se cierra la sesion y se envia al formulario de incio de sesion
     - Cookies de inicio de sesion
 
 
@@ -21,12 +22,12 @@ COSAS DEL TEMA:
 % DE COSAS HECHAS:
     - Usuarios -> 99%
     - Categorias -> 99%
-    - Productos -> 0%
+    - Productos -> 99%
     - Pedidos -> 0%
     - ¿Lineas-Pedidos? -> 0%
 
 POR DONDE ME QUEDO ->
-    - Crear Producto -> Comprobar que funcion correctamente.
+    - Siguiente Punto
 
 ESTRUCTURA:
 /hiperarmando/                                                         

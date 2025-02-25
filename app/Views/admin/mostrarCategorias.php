@@ -2,9 +2,9 @@
         <h1> Tabla con todos las Categorias </h1>
 
         <?php
-            if (isset($_SESSION['editar'])) {
-                echo "<p class='". $_SESSION['editar']['tipo'] ."'>" . $_SESSION['editar']['mensaje'] . "</p>";
-                unset($_SESSION['editar']);
+            if (isset($_SESSION['eliminar'])) {
+                echo "<p class='". $_SESSION['eliminar']['tipo'] ."'>" . $_SESSION['eliminar']['mensaje'] . "</p>";
+                unset($_SESSION['eliminar']);
             }
 
             if (!empty($categorias)) {
@@ -24,7 +24,7 @@
                             <td>{$categoria['id']}</td>
                             <td>{$categoria['nombre']}</td>
                             <td> 
-                                <a href='". URL_BASE ."categoria/eliminarCategoria?id=". $categoria['id'] ."'
+                                <a href='". URL_BASE ."categoria/eliminar/". $categoria['id'] ."'
                                  onclick='return check()'>
                                  Eliminar</a>
                             </td>
