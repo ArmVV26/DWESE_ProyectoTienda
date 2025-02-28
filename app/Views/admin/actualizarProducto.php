@@ -1,4 +1,4 @@
-<section class="contenedor">
+    <section class="contenedor">
         <h1>Editar Producto</h1>
 
         <!-- Mostrar Usuario -->
@@ -43,7 +43,7 @@
 
         <!-- Formulario de Actualización -->
         <!-- Formulario de Creación -->
-        <form action="<?=URL_BASE ?>admin/actualizarProducto/<?=$producto['id'] ?>" method="POST">
+        <form action="<?=URL_BASE ?>admin/actualizarProducto/<?=$producto['id'] ?>" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="data[id]" value="<?=$producto['id']?>">
 
             <label for="nombre">Nombre</label>

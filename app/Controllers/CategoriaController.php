@@ -55,26 +55,31 @@
          * @return void
          */
         public function crearCategoria() {
+            // Verifico si se ha enviado el formulario de categoria por POST y si se han recibido los datos
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+                // Valido los datos
                 if ($_POST['data']) {
                     $validar = $this->validarCategoria($_POST['data']);
                     
+                    // Si no hay errores y los datos son válidos, creo la categoría
                     if (empty($this->errores) && !empty($validar)) {
                         $categoria = new Categoria($validar);
                         $crearCategoria = $this->categoriaServices->crearCategoria($categoria);
 
+                        // Si se ha creado la categoría, muestro un mensaje de éxito
                         if ($crearCategoria) {
                             $_SESSION['registro'] = [
                                 'mensaje' => 'Categoría creada correctamente',
                                 'tipo' => 'exito'
                             ];
+                        // Si no se ha creado la categoría, muestro un mensaje de error
                         } else {
                             $_SESSION['registro'] = [
                                 'mensaje' => 'Error al crear la categoría: La categoría ya existe',
                                 'tipo' => 'fallo'
                             ];
                         }
+                    // Si hay errores, muestro un mensaje de error
                     } else {
                         $_SESSION['registro'] = [
                             'mensaje' => 'Error al crear la categoría:',
@@ -82,6 +87,7 @@
                         ];
                         $_SESSION['errores'] = $this->errores;
                     }
+                // Si no se han recibido los datos, muestro un mensaje de error
                 } else {
                     $_SESSION['registro'] = [
                         'mensaje' => 'Error al crear la categoría: Datos vacíos',
@@ -90,6 +96,7 @@
                 }
             }
 
+            // Renderizo la vista de crear categoría
             render('../Views/admin/crearCategoria', ['titulo' => 'Crear Categoría']);
             exit();
         }
@@ -112,9 +119,11 @@
          * @return void
          */
         public function eliminarCategoria($id = null) {
+            // Compruebo si el id es válido
             if (isset($id)) {
                 $eliminarCategoria = $this->categoriaServices->eliminarCategoria($id);
 
+                // Si se ha eliminado la categoría, muestro un mensaje de éxito
                 if ($eliminarCategoria) {
                     $_SESSION['eliminar'] = [
                         'mensaje' => 'La categoría se ha eliminado correctamente',

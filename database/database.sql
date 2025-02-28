@@ -79,14 +79,14 @@ INSERT INTO categorias (nombre) VALUES
 
 -- Insertar Productos
 INSERT INTO productos (categoria_id, nombre, descripcion, precio, stock, oferta, fecha, imagen) VALUES
-(1, 'Camiseta Nike', 'Camiseta de la marca Nike', 20.00, 100, 'si', '2025-02-01', 'Camiseta-Nike.jpg'),
-(1, 'Camiseta Adidas', 'Camiseta de la marca Adidas', 25.00, 100, 'no', '2025-02-01', 'Camiseta-Adidas.jpg'),
-(2, 'Pantalón Nike', 'Pantalón de la marca Nike', 40.00, 100, 'si', '2025-02-01', 'Pantalon-Nike.jpg'),
-(2, 'Pantalón Adidas', 'Pantalón de la marca Adidas', 45.00, 100, 'no', '2025-02-01', 'Pantalon-Adidas.jpg'),
-(3, 'Zapatillas Nike', 'Zapatillas de la marca Nike', 60.00, 100, 'si', '2025-02-01', 'Zapatillas-Nike.jpg'),
-(3, 'Zapatillas Adidas', 'Zapatillas de la marca Adidas', 65.00, 100, 'no', '2025-02-01', 'Zapatillas-Adidas.jpg'),
-(4, 'Gorra Nike', 'Gorra de la marca Nike', 15.00, 100, 'si', '2025-02-01', 'Gorra-Nike.jpg'),
-(4, 'Gorra Adidas', 'Gorra de la marca Adidas', 20.00, 100, 'no', '2025-02-01', 'Gorra-Adidas.jpg');
+(1, 'Camiseta Nike', 'Camiseta de la marca Nike', 20.00, 10, 'si', '2025-02-01', 'Camiseta-Nike.jpg'),
+(1, 'Camiseta Adidas', 'Camiseta de la marca Adidas', 25.00, 15, 'no', '2025-02-01', 'Camiseta-Adidas.jpg'),
+(2, 'Pantalón Nike', 'Pantalón de la marca Nike', 40.00, 10, 'si', '2025-02-01', 'Pantalon-Nike.jpg'),
+(2, 'Pantalón Adidas', 'Pantalón de la marca Adidas', 45.00, 15, 'no', '2025-02-01', 'Pantalon-Adidas.jpg'),
+(3, 'Zapatillas Nike', 'Zapatillas de la marca Nike', 60.00, 10, 'si', '2025-02-01', 'Zapatillas-Nike.jpg'),
+(3, 'Zapatillas Adidas', 'Zapatillas de la marca Adidas', 65.00, 10, 'no', '2025-02-01', 'Zapatillas-Adidas.jpg'),
+(4, 'Gorra Nike', 'Gorra de la marca Nike', 15.00, 5, 'si', '2025-02-01', 'Gorra-Nike.jpg'),
+(4, 'Gorra Adidas', 'Gorra de la marca Adidas', 20.00, 5, 'no', '2025-02-01', 'Gorra-Adidas.jpg');
 
 -- Insertar Pedidos
 INSERT INTO pedidos (usuario_id, provincia, localidad, direccion, coste, estado, fecha, hora) VALUES

@@ -28,7 +28,8 @@
                                 <td>{$usuario['rol']}</td>
                             </tr>
                         </tbody>
-                    </table>";
+                    </table>
+                ";
 
             } else {
                 echo "<p>No hay usuario registrado con ese ID.</p>";

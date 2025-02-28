@@ -7,7 +7,7 @@
 
     /**
      * Servicios de Categoría
-     * 1. Crear una categoría
+     * 1. Crear/Guardar una categoría
      * 2. Mostrar las categorías
      * 3. Eliminar una categoría
      */

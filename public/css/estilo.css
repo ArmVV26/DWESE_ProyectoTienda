@@ -180,6 +180,15 @@ footer p {
     padding: 1rem 0 0.5rem;
 }
 
+.contenedor h2 {
+    font-size: 2rem;
+    font-style: italic;
+    text-align: center;
+    color: var(--color-gris);
+    text-shadow: 1px 1px 2px var(--color-amarillo);
+    padding: 1rem 0 0.5rem;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -232,6 +241,24 @@ input[type="submit"]:hover {
     color: var(--color-gris);
 }
 
+.recordar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recordar .checkbox {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: auto 0.5rem;
+    transition: all 0.25s;
+}
+
+.recordar .checkbox:checked {
+    accent-color: var(--color-amarillo);
+    box-shadow: 0 0 10px 2px var(--color-amarillo);
+}
+
 /* Errores del Formulario */
 .exito {
     font-size: 1.25rem;
@@ -280,6 +307,12 @@ input[type="submit"]:hover {
     color: var(--color-gris);
     text-shadow: 1px 1px 2px var(--color-amarillo);
     padding: 1rem 0 0.5rem;
+}
+
+.contenedor-tabla p {
+    color: var(--color-gris);
+    padding: 1rem;
+    font-size: 1rem;
 }
 
 table {
@@ -414,4 +447,211 @@ td.descripcion {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.producto section .add-carrito {
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 2rem;
+    color: var(--color-marron);
+    background-color: var(--color-amarillo);
+    transition: all 0.25s;
+}
+
+.producto section .add-carrito:hover {
+    color: var(--color-amarillo);
+    background-color: var(--color-marron);
+}
+
+.producto section .add-carrito:focus {
+    transform: rotate(0.25turn) scale(0.85);
+}
+
+/* Estilo del carrito */
+.contenedor-carrito {
+    width: 60%;
+    min-height: 20rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem auto;
+}
+
+.mostrar-productos {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 1rem;
+    box-shadow: 0 0 2px var(--color-negro);
+    border-radius: 2rem;
+    background-color: var(--color-gris);
+    padding: 0.5rem 1rem 5.5rem 0.5rem;
+    font-family: Poppins;
+}
+
+.mostrar-productos h1 {
+    font-size: 2rem;
+    font-family: Lato;
+    margin: 0.25rem 1rem;
+    color: var(--color-marron);
+}
+
+.mostrar-productos .no-registros {
+    text-align: center;
+}
+
+.atriculo-producto {
+    display: flex;
+    box-shadow: 2px 2px 6px var(--color-negro);
+    border-radius: 2rem;
+    background-color: var(--color-blanco);
+}
+
+.atriculo-producto figure {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    border-right: 2px solid var(--color-amarillo);
+}
+
+.atriculo-producto figure img {
+    width: 10rem;
+    height: 10rem;
+    display: block;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+}
+
+.atriculo-producto section:first-of-type {
+    flex: 3;
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+}
+
+.atriculo-producto section:first-of-type p:first-of-type {
+    margin: 0.25rem 0 0.35rem;
+}
+
+.atriculo-producto section:last-of-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-right: 0.25rem;
+}
+
+.atriculo-producto section a {
+    flex: 0;
+    display: inline-block;
+    padding: 0;
+    margin: 1rem;
+}
+
+.atriculo-producto section a i{
+    font-size: 1.5rem;
+    color: var(--color-marron);
+    transition: all 0.25s;
+}
+
+.atriculo-producto section a i:hover {
+    color: var(--color-amarillo);
+    transform: scale(1.25);
+}
+
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.vaciar-carrito {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: inline-block;  
+    padding: 0.5rem 1rem;
+    background-color: var(--color-auzl-oscuro);
+    border-radius: 2rem;
+    transition: all 0.25s;
+}
+
+.vaciar-carrito:hover {
+    box-shadow: 0 0 1px 2px var(--color-amarillo);
+}
+
+.pedido {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-height: 15rem;
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+    border-radius: 2rem;
+    background-color: var(--color-marron);
+    box-shadow: 0 0 2px var(--color-negro);
+    color: var(--color-gris);
+}
+
+.pedido article {
+    font-family: Poppins;
+}
+
+.pedido .subtotal{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 0rem;
+}
+
+.pedido .envio {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem 1rem;
+    border-bottom: 2px solid var(--color-gris);
+}
+
+.pedido .total {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem 0.5rem;
+}
+
+.pedido b {
+    font-family: Lato;
+    font-weight: normal;
+    font-size: 0.75rem;
+    opacity: 75%;
+}
+
+.pedido a {
+    text-align: center;
+    color: var(--color-marron);
+    background-color: var(--color-gris);
+    border-radius: 2rem;
+    border: 2px solid var(--color-auzl-oscuro);
+    padding: 0.5rem;
+    transition: all 0.25s;
+}
+
+.pedido a:hover {
+    color: var(--color-amarillo);
+    background-color: var(--color-marron);
+    border: 2px solid var(--color-gris);
+}
+
+/* Estilo para los botons del Perfil */
+.boton-perfil {
+    background-color: var(--color-marron);
+    border: 2px solid var(--color-gris);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+}
+
+.boton-perfil:hover {
+    background-color: var(--color-gris);
+    border: 2px solid var(--color-amarillo);
 }

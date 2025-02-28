@@ -7,9 +7,13 @@
 
     /**
      * Servicios de Producto
-     * 1. Crear un producto
-     * 2. Obtener todos los productos
-     * 3. Obtener productos por su categoria
+     * 1. Crear/Guardar un producto
+     * 2. Eliminar un producto
+     * 3. Obtener un producto por su id
+     * 4. Actualizar un producto
+     * 5. Obtener todos los productos
+     * 6. Obtener productos por categoria
+     * 7. Decrementar el stock de un producto
      */
     class ProductoServices {
         // Atributos
@@ -78,5 +82,16 @@
          */
         public function obtenerProductosCategoria($categoria_id) {
             return $this->productoRepository->obtenerProductosCategoria($categoria_id);
+        }
+
+        /**
+         * Método para decrementar el stock de un producto cuando se realiza un pedido
+         * 
+         * @param int $id El id del producto
+         * @param int $cantidad La cantidad de productos
+         * @return bool True si se ha actualizado correctamente, false en caso contrario
+         */
+        public function decrementarStock($id, $cantidad) {
+            return $this->productoRepository->decrementarStock($id, $cantidad);
         }
     }

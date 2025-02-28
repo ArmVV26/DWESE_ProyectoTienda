@@ -25,7 +25,7 @@
 
         // Métodos
         /**
-         * Método para crear una categoría
+         * Método para crear/guardar una categoría
          * 
          * @param Categoria $categoria Los datos de la categoría
          * @return bool True si se ha creado correctamente, false en caso contrario
@@ -66,6 +66,7 @@
                 $sql = "
                     SELECT * 
                     FROM categorias
+                    ORDER BY id ASC
                 ";
                 $stmt = $conexion->prepare($sql);
 

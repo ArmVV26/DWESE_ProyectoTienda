@@ -25,11 +25,16 @@
         <!-- action="<?=URL_BASE ?>usuario/formularioLogin" -->
         <form action="" method="POST">
             <label for="email">Email</label>
-            <input type="email" name="data[email]" id="email" required><br>
+            <input type="email" name="data[email]" id="email" required>
 
             <label for="password">Contraseña</label>
-            <input type="password" name="data[password]" id="password" required><br>
+            <input type="password" name="data[password]" id="password" required>
 
+            <section class="recordar">
+                <label for="recordar">Recordar</label>
+                <input class="checkbox" type="checkbox" name="data[recordar]" id="recordar">
+            </section>
+    
             <input type="submit" value="Inicar Sesión">
 
         </form>

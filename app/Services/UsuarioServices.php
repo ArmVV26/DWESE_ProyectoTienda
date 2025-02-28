@@ -7,7 +7,7 @@
 
     /**
      * Servicios de Usuario
-     * 1. Crear un nuevo usuario
+     * 1. Crear/guardar un nuevo usuario
      * 2. Iniciar sesión
      * 3. Mostrar los usuarios
      * 4. Eliminar un usuario

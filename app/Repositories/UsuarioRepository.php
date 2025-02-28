@@ -105,6 +105,7 @@
                         return [
                             'id' => $data['id'],
                             'nombre' => $data['nombre'],
+                            'email' => $data['email'],
                             'rol' => $data['rol']
                         ];
                     } else {
@@ -132,6 +133,7 @@
                 $sql = "
                     SELECT * 
                     FROM usuarios
+                    ORDER BY id ASC
                 ";
                 $stmt = $conexion->prepare($sql);
 

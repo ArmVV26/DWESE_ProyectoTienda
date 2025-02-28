@@ -35,6 +35,7 @@
             // Llamo al método del servicio para mostrar las categorías
             $categorias = $this->categoriaService->mostrarCategorias();
 
+            // Si el id no es nulo, muestro los productos de la categoría
             if (isset($id)) {
                 $productos = $this->productoService->obtenerProductosCategoria($id);
             } else {

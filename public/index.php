@@ -11,9 +11,6 @@
     
     // Cargar la configuracion base
     require_once __DIR__ . '/../config/config.php';
-    
+
     // Cargar las rutas
     require_once __DIR__ . '/../config/rutas.php';
-
-    // Cargar el header de la web
-    require_once __DIR__ . '/../App/Views/layout/header.php';

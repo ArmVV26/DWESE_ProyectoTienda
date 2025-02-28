@@ -15,6 +15,10 @@
      * Controlador de Producto
      * 1. Validar los datos del formulario de producto
      * 2. Crear un producto en la base de datos
+     * 3. Mostrar los productos
+     * 4. Eliminar un producto
+     * 5. Validar los datos del formulario de actualización de un producto
+     * 6. Actualizar un producto en la base de datos
      */
     class ProductoController {
         // Atributos
@@ -33,7 +37,7 @@
          * Método para validar los datos del formulario de creación de un producto
          * 
          * @param array $producto Los datos del formulario
-         * @return array Devuelve los datos del usuario saneados o un array con los errores
+         * @return array Devuelve los datos del producto saneados o un array con los errores
          */
         private function validarProducto($producto) {
             // Recojo y limpio los datos
@@ -42,7 +46,7 @@
             $precio = (float) $producto['precio'] ?? 0;
             $stock = (int) $producto['stock'] ?? 0;
             $oferta = trim($producto['oferta']) ?? '';
-            $imagen = trim($producto['imagen']) ?? '';
+            $imagen = trim($_FILES['data']['name']['imagen']) ?? '';
             $categoria_id = (int) $producto['categoria_id'] ?? 0;
 
             // Valido los datos
@@ -95,20 +99,43 @@
          * @return void
          */
         public function crearProducto() {
+            // Compruebo si se ha enviado el formulario de creación de producto por POST y si hay datos
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+                // Valido los datos
                 if ($_POST['data']) {
                     $validar = $this->validarProducto($_POST['data']);
 
+                    // Si no hay errores, creo el producto
                     if (empty($this->errores) && !empty($validar)) {
                         $producto = Producto::fromArray($validar);
                         $crearProd = $this->productoService->crearProducto($producto);
 
+                        // Si se ha creado el producto, muestro un mensaje de éxito
                         if ($crearProd) {
                             $_SESSION['registro'] = [
                                 'mensaje' => 'Producto creado correctamente',
                                 'tipo' => 'exito'
                             ];
+
+                            // Guardo la imagen en la carpeta media/img
+                            if (isset($_FILES['data']['tmp_name']['imagen'])) {
+                                $archivoTmp = $_FILES['data']['tmp_name']['imagen'];
+                                $nombreArchivo = basename($_FILES['data']['name']['imagen']);
+                                $ruta = __DIR__ . '/../../public/media/img/' . $nombreArchivo;
+
+                                if (move_uploaded_file($archivoTmp, $ruta)) {
+                                    $_SESSION['registro'] = [
+                                        'mensaje' => 'Producto creado correctamente: Imagen guardada',
+                                        'tipo' => 'exito'
+                                    ];
+                                } else {
+                                    $_SESSION['registro'] = [
+                                        'mensaje' => 'Producto creado correctamente: Error al guardar la imagen',
+                                        'tipo' => 'fallo'
+                                    ];
+                                }
+                            }
+                                
                         } else {
                             $_SESSION['registro'] = [
                                 'mensaje' => 'Error al crear el producto: El producto ya existe',
@@ -157,9 +184,11 @@
          * @return void
          */
         public function eliminarProducto($id) {
+            // Compruebo si el id del producto es válido
             if (isset($id)) {
                 $eliminarProd = $this->productoService->eliminarProducto($id);
                 
+                // Si se ha eliminado el producto, muestro un mensaje de éxito
                 if ($eliminarProd) {
                     $_SESSION['eliminar'] = [
                         'mensaje' => 'Producto eliminado correctamente',
@@ -222,12 +251,17 @@
          * @return void
          */
         public function actualizarProducto($id) {
+            // Compruebo si se ha enviado el formulario de actualización de producto por POST y si hay datos
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+                // Valido los datos
                 if ($_POST['data']) {
                     $datos = $_POST['data'];
                     $validar = $this->validarActualizarProducto($datos);
 
+                    // Guardo la imagen antigua para borrarla
+                    $imagenAntigua = $this->productoService->obtenerPorId($datos['id'])['imagen'];
+
+                    // Si no hay errores, actualizo el producto
                     if ($validar) {
                         $resultado = $this->productoService->actualizarProducto($datos);
 
@@ -236,6 +270,31 @@
                                 'mensaje' => 'Producto actualizado correctamente',
                                 'tipo' => 'exito'
                             ];
+
+                            // Guardo la imagen en la carpeta media/img
+                            if (isset($_FILES['data']['tmp_name']['imagen']) && !empty($_FILES['data']['tmp_name']['imagen'])) {
+                                // Borro la imagen antigua
+                                if (file_exists(__DIR__ . '/../../public/media/img/' . $imagenAntigua)) {
+                                    unlink(__DIR__ . '/../../public/media/img/' . $imagenAntigua);
+                                }
+                                
+                                $archivoTmp = $_FILES['data']['tmp_name']['imagen'];
+                                $nombreArchivo = basename($_FILES['data']['name']['imagen']);
+                                $ruta = __DIR__ . '/../../public/media/img/' . $nombreArchivo;
+
+                                if (move_uploaded_file($archivoTmp, $ruta)) {
+                                    $_SESSION['editar'] = [
+                                        'mensaje' => 'Producto creado correctamente: Imagen guardada',
+                                        'tipo' => 'exito'
+                                    ];
+                                } else {
+                                    $_SESSION['editar'] = [
+                                        'mensaje' => 'Producto creado correctamente: Error al guardar la imagen',
+                                        'tipo' => 'fallo'
+                                    ];
+                                }
+                            }
+
                         } else {
                             $_SESSION['editar'] = [
                                 'mensaje' => 'Error al actualizar el producto: El producto no existe',
@@ -257,9 +316,11 @@
                 }
             }
 
+            // Compruebo si el id del producto es válido
             if (isset($id)) {
                 $producto = $this->productoService->obtenerPorId($id);
 
+                // Si el producto existe, muestro el formulario de actualización
                 if ($producto) {
                     render('../Views/admin/actualizarProducto', [
                         'titulo' => 'Actualizar Producto',

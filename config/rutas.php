@@ -5,6 +5,8 @@
     use Controllers\UsuarioController;
     use Controllers\CategoriaController;
     use Controllers\ProductoController;
+    use Controllers\CarritoController;
+    use Controllers\PedidoController;
 
     // Importo la clase Router
     use Lib\Router;
@@ -60,6 +62,11 @@
     Router::add('POST', 'usuario/actualizarUsuario/:id', function($id){
         return (new UsuarioController())->actualizarUsuario($id);
     });
+    // Ruta para mostrar el perfil de un usuario
+    Router::add('GET', 'usuario/perfil', function(){
+        return (new UsuarioController())->perfilUsuario();
+    });
+
 
     // RUTAS CATEGORÍAS
     // Ruta para crear una categoría
@@ -102,5 +109,53 @@
         return (new ProductoController())->actualizarProducto($id);
     });
 
+    // RUTAS CARRITO
+    // Ruta para agregar un producto al carrito
+    Router::add('GET', 'carrito/agregarProducto/:id', function($id){
+        return (new CarritoController())->agregarProducto($id);
+    });
+    Router::add('POST', 'carrito/agregarProducto/:id', function($id){
+        return (new CarritoController())->agregarProducto($id);
+    });
+    // Ruta para mostrar el carrito
+    Router::add('GET', 'carrito/mostrarCarrito', function(){
+        return (new CarritoController())->mostrarCarrito();
+    });
+    // Ruta para restar/eliminar un producto del carrito
+    Router::add('GET', 'carrito/restarProducto/:id', function($id){
+        return (new CarritoController())->restarProducto($id);
+    });
+    // Ruta para eliminar un producto del carrito
+    Router::add('GET', 'carrito/eliminarProducto/:id', function($id){
+        return (new CarritoController())->eliminarProducto($id);
+    });
+    // Ruta para vaciar el carrito
+    Router::add('GET', 'carrito/vaciarCarrito', function(){
+        return (new CarritoController())->vaciarCarrito();
+    });
+
+    // RUTAS PEDIDO
+    // Ruta para formulario pedido
+    Router::add('GET', 'pedido/formularioPedido', function(){
+        return (new PedidoController())->formularioPedido();
+    });
+    Router::add('POST', 'pedido/formularioPedido', function(){
+        return (new PedidoController())->formularioPedido();
+    });
+    // Ruta para mostrar el pedido existoso
+    Router::add('GET', 'pedido/pedidoExitoso', function(){
+        return (new PedidoController())->formularioPedido();
+    });
+    Router::add('POST', 'pedido/pedidoExitoso', function(){
+        return (new PedidoController())->formualrioPedido();
+    });
+    // Ruta para mostrar los pedidos de un usuario
+    Router::add('GET', 'pedido/mostrarPedidos', function(){
+        return (new PedidoController())->obtenerPedidosUsuario();
+    });
+    Router::add('POST', 'pedido/mostrarPedidos', function(){
+        return (new PedidoController())->obtenerPedidosUsuario();
+    });
+    
     // Defino la ruta por defecto
     Router::dispatch();

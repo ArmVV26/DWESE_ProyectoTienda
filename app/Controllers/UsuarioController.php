@@ -5,6 +5,7 @@
     // Importo las clases necesarias
     use Models\Usuario;
     use Services\UsuarioServices;   
+    use Services\PedidoServices;
 
     // Importo la función para renderizar la vista
     require_once __DIR__ . '/../../config/render.php';
@@ -20,15 +21,18 @@
      * 7. Eliminar un usuario
      * 8. Validar los datos del formulario de actualización
      * 9. Actualizar/editar un usuario
+     * 10. Mostrar el perfil de un usuario
      */
     class UsuarioController {
         // Atributos
         private UsuarioServices $usuarioServices;
+        private PedidoServices $pedidoServices;
         private array $errores = [];
 
         // Constructor
         public function __construct() {
             $this->usuarioServices = new UsuarioServices();
+            $this->pedidoServices = new PedidoServices();
         }
         
         // Métodos
@@ -145,6 +149,7 @@
          * @return array Devuelve los datos del usuario saneados o un array con los errores
          */
         private function validarInicioSesion($usuario) {
+            // Recojo y limpio los datos
             $email = trim($usuario['email']) ?? '';
             $password = trim($usuario['password']) ?? '';
 
@@ -174,17 +179,27 @@
          * @return void
          */
         public function login() {
+            // Verifico si se ha enviado el formulario de inicio de sesión por POST y si se han recibido los datos
             if ($_SERVER['REQUEST_METHOD'] === "POST") {
-
+                // Valido los datos
                 if ($_POST['data']) {
                     $validar = $this->validarInicioSesion($_POST['data']);
 
+                    // Si no hay errores y los datos son válidos, inicio sesión
                     if (empty($this->errores) && !empty($validar)) {
                         $usuario = Usuario::fromArray($validar);
                         $usuarioValido = $this->usuarioServices->iniciarSesion($usuario);
 
+                        // Si el usuario es válido, inicio sesión y redirijo a la página principal
                         if ($usuarioValido) {
+                            // Guardo los datos del usuario en la sesión
                             $_SESSION['inicioSesion'] = $usuarioValido;
+
+                            // Si el usuario ha marcado la casilla de recordar, se crea una cookie
+                            if (isset($_POST['data']['recordar'])) {
+                                setcookie('recordar', $usuarioValido['id'], time() + (7 * 24 * 60 * 60), '/');
+                            }
+
                             header('Location: '. URL_BASE);
                             exit();
                         } else {
@@ -220,6 +235,11 @@
         public function cerrarSesion() {
             // Cierro la sesión
             unset($_SESSION['inicioSesion']);
+            // Vacío el carrito
+            unset($_SESSION['carrito']);
+            // Borro la cookie
+            setcookie('recordar', '', time() - 3600, "/");
+
             header('Location: '. URL_BASE);
             exit();
         }
@@ -318,15 +338,18 @@
          * @return void
          */
         public function actualizarUsuario($id = null) {
+            // Compruebo si el formulario se ha enviado por POST y si se han recibido los datos
             if ($_SERVER['REQUEST_METHOD'] === "POST") {
-
+                // Valido los datos
                 if (isset($_POST['data'])) {
                     $datos = $_POST['data'];
                     $validar = $this->validarActualizar($datos);
 
+                    // Si los datos son válidos, actualizo el usuario
                     if ($validar) {
                         $resultado = $this->usuarioServices->acualizarUsuario($datos);
 
+                        // Muestro un mensaje de éxito o error al actualizar el usuario
                         if ($resultado) {
                             $_SESSION['editar'] = [
                                 'mensaje' => "Usuario actualizado correctamente.",
@@ -334,13 +357,28 @@
                             ];
 
                             // Actualizo los datos de la sesión si el usuario actualizado es el mismo que el que ha iniciado sesión
-                            if ($_SESSION['inicioSesion']['id'] === $datos['id']) {
-                                unset($_SESSION['inicioSesion']);
-                                $_SESSION['inicioSesion'] = [
-                                    'id' => $datos['id'],
-                                    'nombre' => $datos['nombre'],
-                                    'rol' => $datos['rol']
-                                ];
+                            if ($_SESSION['inicioSesion']['id'] == $datos['id']) {
+                                
+                                // Actualizo el nombre si se ha modificado el nombre
+                                if (!empty($datos['nombre']) && $_SESSION['inicioSesion']['nombre'] !== $datos['nombre']) {
+                                    $_SESSION['inicioSesion']['nombre'] = $datos['nombre'];
+                                }
+
+                                // Actualizo el email, el rol y la contraseña si se han modificado
+                                if ((!empty($datos['email']) && $_SESSION['inicioSesion']['email'] !== $datos['email']) ||
+                                    (!empty($datos['rol']) && $_SESSION['inicioSesion']['rol'] !== $datos['rol']) ||
+                                    !empty($datos['password']))  {
+
+                                    // Cierro la sesión
+                                    unset($_SESSION['inicioSesion']);
+
+                                    $_SESSION['login'] = [
+                                        'mensaje' => "Por favor, inicie sesión de nuevo",
+                                        'tipo' => 'exito'
+                                    ];
+                                    header('Location: '. URL_BASE . 'usuario/formularioLogin');
+                                    exit();
+                                }
                             }
                         } else {
                             $_SESSION['editar'] = [
@@ -362,9 +400,11 @@
                 }
             }
             
+            // Compruebo si se ha recibido el id del usuario
             if (isset($id)) {
                 $usuario = $this->usuarioServices->obtenerPorId($id);
 
+                // Renderizo la vista de editar usuario
                 if($usuario) {
                     render('../Views/usuario/actualizarUsuario', ['titulo' => 'Editar Usuario', 'usuario' => $usuario]);
                     exit();
@@ -379,6 +419,26 @@
                     'mensaje' => "Error al editar el usuario: Datos incorrectos",
                     'tipo' => 'fallo'
                 ];
+            }
+        }
+
+        /**
+         * Método para mostrar el perfil de un usuario
+         * 
+         * @return void
+         */
+        public function perfilUsuario() {
+            // Compruebo si la sesion está iniciada y si el usuario es un usuario registrado
+            if (isset($_SESSION['inicioSesion'])) {
+                $usuario = $this->usuarioServices->obtenerPorId($_SESSION['inicioSesion']['id']);
+                $pedidos = $this->pedidoServices->obtenerPedidosUsuario($_SESSION['inicioSesion']['id']);
+
+                render('usuario/perfilUsuario', [
+                    'titulo' => 'Perfil Usuario', 
+                    'usuario' => $usuario,
+                    'pedidos' => $pedidos]
+                );
+                exit();
             }
         }
     }

@@ -21,7 +21,7 @@
         ?>
     
         <!-- Formulario de Creación -->
-        <form action="<?=URL_BASE ?>admin/crearProducto" method="POST">
+        <form action="<?=URL_BASE ?>admin/crearProducto" method="POST" enctype="multipart/form-data">
             <label for="nombre">Nombre</label>
             <input type="text" name="data[nombre]" id="nombre" required>
 

@@ -1,11 +1,10 @@
 echo "Me cago me meo, me tiro un peo";
 
 COSAS A TENER EN CUENTA:
-    - ¿(Linea 179) Cambiar el header por un render de la pagina principal.?
     - Tengo que cambiar que cada vez que edite un perfil (sea cliente o admin), se tiene que actualizar
         la sesion de inicio de sesion, para que se acualice el nombre y el rol (principalmente)
     - Si se actualiza el correo o la contraseña se cierra la sesion y se envia al formulario de incio de sesion
-    - Cookies de inicio de sesion
+    - Al crear un nuevo producto guardar la imagen en el directorio de media/img
 
 
 COMANDOS
@@ -27,48 +26,68 @@ COSAS DEL TEMA:
     - ¿Lineas-Pedidos? -> 0%
 
 POR DONDE ME QUEDO ->
-    - Siguiente Punto
+    - Hacer documentacion y las cosas a tener en cuenta
 
 ESTRUCTURA:
 /hiperarmando/                                                         
 ├─/app/                              
 │   ├─/Controllers/                  
-│   │   ├─/CategoriaController.php   
+│   │   ├─/CarritoController.php
+│   │   ├─/CategoriaController.php
+│   │   ├─/HomeController.php
+│   │   ├─/PedidoController.php   
+│   │   ├─/ProductoController.php
 │   │   └─/UsuarioController.php     
 │   │                                
 │   ├─/Models/                       
-│   │   ├─/Categoria.php             
+│   │   ├─/Categoria.php
+│   │   ├─/Pedido.php
+│   │   ├─/Producto.php             
 │   │   └─/Usuario.php               
 │   │                                
 │   ├─/Repositories/                 
 │   │   ├─/CategoriaRepository.php   
+│   │   ├─/PedidoRepository.php
+│   │   ├─/ProductoRepository.php
 │   │   └─/UsuarioRepository.php     
 │   │                                
 │   ├─/Services/                     
-│   │   ├─/CategoriaServices.php     
+│   │   ├─/CategoriaServices.php
+│   │   ├─/PedidoServices.php
+│   │   ├─/ProductoServices.php     
 │   │   └─/UsuarioServices.php       
 │   │                                
 │   ├─/Views/  
 |   |   ├─/admin/ 
-│   │   │   ├─/mostrarUsuarios.php            
-│   │   │   ├─/editarUsuarios.php            
+│   │   │   ├─/actualizarProducto.php
+│   │   │   ├─/crearCategoria.php
+│   │   │   ├─/crearProducto.php
+│   │   │   ├─/mostrarCategorias.php
+│   │   │   ├─/mostrarProductos.php
+│   │   │   └─/mostrarUsuarios.php            
 |   |   |                   
-│   │   ├─/carrito/                  
+│   │   ├─/carrito/  
+│   │   │   └─/mostrarCarrito.php                 
 │   │   │                            
-│   │   ├─/categoria/                
+│   │   ├─/home/     
+│   │   │   └─/index.php           
 │   │   │                            
 │   │   ├─/layout/                   
 │   │   │   ├─/footer.php            
 │   │   │   ├─/header.php            
 │   │   │   └─/layout.php            
 │   │   │                            
-│   │   ├─/pedido/                   
-│   │   │                            
-│   │   ├─/producto/                 
+│   │   ├─/pedido/  
+│   │   │   ├─/formularioPedido.php            
+│   │   │   ├─/mostrarPedidos.php            
+│   │   │   └─/pedidoExitoso.php                  
 │   │   │                            
 │   │   └─/usuario/                  
-│   │       ├─/formularioLogin.php   
-│   │       └─/formularioRegistro.php
+│   │       ├─/actualizarUsuario.php
+│   │       ├─/formularioLogin.php  
+│   │       ├─/formularioRegistro.php
+│   │       ├─/perfilUsuario.php 
+│   │       └─/registroExitoso.php
 │   │                                
 │   └─/.htaccess                     
 │                                    
@@ -81,6 +100,7 @@ ESTRUCTURA:
 │   └─/database.sql                  
 │                                    
 ├─/lib/                              
+│   ├─/correo.php
 │   ├─/database.php                  
 │   └─/router.php                    
 │                                    
@@ -94,6 +114,7 @@ ESTRUCTURA:
 │   │   │   └─/Poppins-Regular.ttf   
 │   │   │                            
 │   │   └─/img/                      
+│   │       ├─/(imagenes-productos).jpg
 │   │       ├─/Logo-HiperArmando.ico 
 │   │       └─/Logo-HiperArmando.svg 
 │   │                                
@@ -105,3 +126,86 @@ ESTRUCTURA:
 ├─/composer.json                     
 ├─/composer.lock                     
 └─/README.md                         
+
+    2. Requisitos
+- Software y Herramientas: Listado de herramientas usadas para el desarrollo del proyecto:
+    - XAMPP: PHP y MySQL
+    - Visual Studio Code 
+    - Composer: comandos usados y dependecias (PHPMailer y PHP-Dotenv)
+
+    3. Estructura del Proyecto
+(Imagen de la estructura del proyecto)
+- Descripción de los Directorios y Archivos que he usado para relizar el proyecto:
+    - app/
+        - Controllers/
+            - X
+        - Models/
+            - X
+        - Repositories/
+            - X 
+        - Services/
+            - X 
+        - Views/
+            - admin/
+                - X 
+            - carrito/
+                - X 
+            - home/
+                - X 
+            - layout/
+                - X 
+            - pedido/
+                - X 
+            - usuario/
+                - X 
+            - .htaccess
+    - cofing/
+        - X 
+    - database/
+        - X 
+    - lib/
+        - X 
+    - public/
+        - css/
+            - X 
+        - media/
+            - fonts/
+                - X 
+            - img/
+                - X 
+        - .htaccess
+        - index.php
+    - .env
+    - composer.json
+    - composer.lock
+- Descripcion de la Arquitectura de como interaccionan los diferentes archivos.
+- Nota indicando que todos los archivos estan comentados de forma que se entienda que se hace en cada momento.
+
+    5. Funcionalidades
+- Funcionalidades que tiene el proyecto, para las diferentes opciones:
+    - Usuario: registro, login, actualizar, eliminar, ver, ver todos, cookie, ...
+    - Categoria: crear, ver, eliminar, ...
+    - Producto: crear, actulizar, ver, eliminar, ...
+    - Carrito: agregar, eliminar, vaciar, cookie, ...
+    - Pedido: procesar, actulizar stock, envio mail, ...
+
+    6. Navegación
+- Descripcion de como se navega por la aplicacion y como interactuar con ella.
+- Ejemplo de flujo.
+
+    7. Configuración del Correo
+- Como se ha configurado para que se pueda mandar correo a traves de MailTrap.
+
+    8. Seguridad
+- Como se han ocultado las credenciales en un .env y .gitignore.
+- Prevención de SQL.
+- Autenticación y Cookies.
+
+    9. Imagenes del Proyecto
+(Imagenes de diferenteas partes del proyecto)
+
+    10. Instalación y Configuración
+- Clonar el Repositorio: Instrucciones para clonar el repositorio.
+- Configuración del entorno: Explicación sobre el archivo .env.example y cómo renombrarlo a .env, junto con una descripción de cada variable de entorno.
+- Instalación de Dependencias: Ejecutar composer install.
+- Configuración del Servidor: Cómo configurar XAMPP (o similar) para que el DocumentRoot apunte a la carpeta public.
