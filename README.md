@@ -403,7 +403,7 @@ composer require phpmailer/phpmailer
 > [!NOTE]
 > Los usuarios son:
 > - ***Correo***: `ditovaquero@gmail.com`
-> - ***Contraseña***: `123456`.
+> - ***Contraseña***: `------`.
 > - ***Rol***: `admin`
 > ---
 > - ***Correo***: `correo@correo.com`
