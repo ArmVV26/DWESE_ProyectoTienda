@@ -413,6 +413,8 @@ composer require phpmailer/phpmailer
 ## 7. Despliegue
 Para realizar el despliegue he usado la web **InfinityFree**. Para poder usar esta web he tenido que modificar algunos aspectos como los datos del archivo `.env`, `lib/router.php` y `config/config.php`. Además, los archivos del directorio ***lib/*** he tenido que ponerlos con la letra en mayúscula, ya que **InfinityFree** es *Case Sensitive*.
 
+[ENLACE A LA WEB](http://hiperarmando.free.nf/)
+
 ### 7.1. Imágenes del Proyecto
 Imágen de la **Página Principal**. <br>
 ![Página Principal](assets/Página-Principal.PNG)
