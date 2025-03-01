@@ -68,7 +68,8 @@ CREATE TABLE lineas_pedidos (
 -- --------------------------------------------------------------------------------
 -- Insertar Usuarios
 INSERT INTO usuarios (nombre, apellidos, email, password, rol) VALUES
-('Armando', 'Vaquero Vargas', 'ditovaquero@gmail.com', '$2y$10$y6UNhOhqhYwf1qctc6lUN.tDUcF1adqdbjrUJepKLNmdOR3ABqYIK', 'admin');
+('Armando', 'Vaquero Vargas', 'ditovaquero@gmail.com', '$2y$10$y6UNhOhqhYwf1qctc6lUN.tDUcF1adqdbjrUJepKLNmdOR3ABqYIK', 'admin'),
+('Antonio', 'García García', 'correo@correo.com', '$2y$10$NkZ8Me0N23PwWKefFIEmXuT0G3ljDf7sxm3flbVsi4Y7zeCGB1v02', 'cliente');
 
 -- Insertar Categorías
 INSERT INTO categorias (nombre) VALUES

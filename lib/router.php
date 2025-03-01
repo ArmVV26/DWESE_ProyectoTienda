@@ -2,6 +2,9 @@
     // Defino el namespace
     namespace lib;
 
+    // Importo la clase necesaria  
+    use Controllers\ErrorController;
+
     // Defino la clase Router
     class Router {
         // Atributos
@@ -52,9 +55,10 @@
             $callback = self::$rutas[$metodo][$accion] ?? null;
             if ($callback) {
                 echo call_user_func($callback, $param);
-            // Si no existe, muestra un error 
+            // Si no existe, se ejecuta el controlador de error y se muestra la vista de error 404
             } else {
-                echo "La ruta <strong>$accion</strong> no se encontró.";
+                $errorController = new ErrorController();
+                $errorController->error404();
             }
         }
     }

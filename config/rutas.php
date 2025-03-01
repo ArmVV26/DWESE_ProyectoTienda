@@ -7,6 +7,7 @@
     use Controllers\ProductoController;
     use Controllers\CarritoController;
     use Controllers\PedidoController;
+    use Controllers\ErrorController;
 
     // Importo la clase Router
     use Lib\Router;
@@ -155,6 +156,12 @@
     });
     Router::add('POST', 'pedido/mostrarPedidos', function(){
         return (new PedidoController())->obtenerPedidosUsuario();
+    });
+
+    // RUTAS ERROR
+    // Ruta para mostrar la página de error
+    Router::add('GET', 'error/error404', function(){
+        return (new ErrorController())->error404();
     });
     
     // Defino la ruta por defecto

@@ -186,6 +186,10 @@
         public function eliminarProducto($id) {
             // Compruebo si el id del producto es válido
             if (isset($id)) {
+                
+                // Guardo la imagen antigua para borrarla
+                $imagenAntigua = $this->productoService->obtenerPorId($id)['imagen'];
+                
                 $eliminarProd = $this->productoService->eliminarProducto($id);
                 
                 // Si se ha eliminado el producto, muestro un mensaje de éxito
@@ -194,6 +198,12 @@
                         'mensaje' => 'Producto eliminado correctamente',
                         'tipo' => 'exito'
                     ];
+
+                    // Borro la imagen antigua
+                    if (file_exists(__DIR__ . '/../../public/media/img/' . $imagenAntigua)) {
+                        unlink(__DIR__ . '/../../public/media/img/' . $imagenAntigua);
+                    }
+
                 } else {
                     $_SESSION['eliminar'] = [
                         'mensaje' => 'Error al eliminar el producto: El producto no existe',
